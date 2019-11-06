@@ -137,7 +137,7 @@ class _MyHomePageState extends State<MyHomePage> {
   List<String> subTitleItems = <String>[
     'subTitle: 文本的基本使用',
     'subTitle: 按钮的基本使用',
-    'subTitle: 图片的基本使用',
+    'subTitle: 图片和ICON',
 
   ];
 }

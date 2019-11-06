@@ -4,6 +4,13 @@ import 'package:flutter_app/BasicControl/IMAGEDEMO/ImageAndIconRoute.dart';
 class ImageBasicUsage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    String icons = "";
+// accessible: &#xE914; or 0xE914 or E914
+    icons += "\uE914";
+// error: &#xE000; or 0xE000 or E000
+    icons += " \uE000";
+// fingerprint: &#xE90D; or 0xE90D or E90D
+    icons += " \uE90D";
     return Scaffold(
       appBar: AppBar(
         title: Text('图片的基本用法'),
@@ -94,7 +101,24 @@ class ImageBasicUsage extends StatelessWidget {
                 style: TextStyle(fontSize: 20.0),
               ),
               Text(
-                  'Flutter中，可以像Web开发一样使用iconfont，iconfont即“字体图标”，它是将图标做成字体文件，然后通过指定不同的字符而显示不同的图片。\n在字体文件中，每一个字符都对应一个位码，而每一个位码对应一个显示字形，不同的字体就是指字形不同，即字符对应的字形是不同的。而在iconfont中，只是将位码对应的字形做成了图标，所以不同的字符最终就会渲染成不同的图标。\n在Flutter开发中，iconfont和图片相比有如下优势：\n1.体积小：可以减小安装包大小。\n2.矢量的：iconfont都是矢量图标，放大不会影响其清晰度。\n3.可以应用文本样式：可以像文本一样改变字体图标的颜色、大小对齐等。\n4.可以通过TextSpan和文本混用。'),
+                  'Flutter中，可以像Web开发一样使用iconfont，iconfont即“字体图标”，它是将图标做成字体文件，然后通过指定不同的字符而显示不同的图片。\n在字体��件中，每一个字符都对应一个位码，而每一个位码对应一个显示字形，不同的字体就是指字形不同，即字符对应的字形是不同的。而在iconfont中，只是将位码对应的字形做成了图标，所以不同的字符最终就会渲染成不同的图标。\n在Flutter开发中，iconfont和图片相比有如下优势：\n1.体积小：可以减小安装包大小。\n2.矢量的：iconfont都是矢量图标，放大不会影响其清晰度。\n3.可以应用文本样式：可以像文本一样改变字体图标的颜色、大小对齐等。\n4.可以通过TextSpan和文本混用。\n'),
+              Text(
+                '\n使用Material Design字体图标\n',
+                style: TextStyle(fontSize: 20.0),
+              ),
+              Text(
+                  'Flutter默认包含了一套Material Design的字体图标，在pubspec.yaml文件中的配置如下\nflutter:\n  uses-material-design: true\nMaterial Design所有图标可以在其官网查看：https://material.io/tools/icons/\n我们看一个简单的例子：\nString icons = "";\n// accessible: &#xE914; or 0xE914 or E914\nicons += "\uE914";\n// error: &#xE000; or 0xE000 or E000\nicons += " \uE000";\n// fingerprint: &#xE90D; or 0xE90D or E90D\nicons += " \uE90D";\n\nText(icons,\n  style: TextStyle(\n      fontFamily: "MaterialIcons",\n      fontSize: 24.0,\n      color: Colors.green\n  ),\n);\n运行效果如下：\n'),
+                  Text(icons,
+                    style: TextStyle(
+                      fontFamily: 'MaterialIcons',
+                      fontSize: 20.0,
+                      color: Colors.green
+                    ),
+                  ),
+                  Text('通过这个示例可以看到，使用图标就像使用文本一样，但是这种方式需要我们提供每个图标的码点，这并对开发者不友好，所以，Flutter封装了IconData和Icon来专门显示字体图标，上面的例子也可以用如下方式实现：\nRow(\n  mainAxisAlignment: MainAxisAlignment.center,\n  children: <Widget>[\n    Icon(Icons.accessible,color: Colors.green,),\n    Icon(Icons.error,color: Colors.green,),\n    Icon(Icons.fingerprint,color: Colors.green,),\n  ],\n)\nIcons类中包含了所有Material Design图标的IconData静态变量定义。\n'),
+                  Text('\n使用自定义字体图标\n', style: TextStyle(fontSize: 20.0),),
+                  Text('我们也可以使用自定义字体图标。iconfont.cn上有很多字体图标素材，我们可以选择自己需要的图标打包下载后，会生成一些不同格式的字体文件，在Flutter中，我们使用ttf格式即可。\n假设我们项目中需要使用一个书籍图标和微信图标，我们打包下载后导入：\n1.导入字体图标文件；这一步和导入字体文件相同，假设我们的字体图标文件保存在项目根目录下，路径为"fonts/iconfont.ttf"：\nfonts:\n  - family: myIcon  #指定一个字体名\n    fonts:\n      - asset: fonts/iconfont.ttf\n2.为了使用方便，我们定义一个MyIcons类，功能和Icons类一样：将字体文件中的所有图标都定义成静态变量：\nclass MyIcons{\n  // book 图标\n  static const IconData book = const IconData(\n      0xe614, \n      fontFamily: "myIcon", \n      matchTextDirection: true\n  );\n  // 微信图标\n  static const IconData wechat = const IconData(\n      0xec7d,  \n      fontFamily: "myIcon", \n      matchTextDirection: true\n  );\n}\n3.使用\nRow(\n  mainAxisAlignment: MainAxisAlignment.center,\n  children: <Widget>[\n    Icon(MyIcons.book,color: Colors.purple,),\n    Icon(MyIcons.wechat,color: Colors.green,),\n  ],\n)\n'),
+
             ],
           ),
         ),

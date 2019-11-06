@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_app/%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6/BUTTON/ButtonBasicUsage.dart';
+import 'package:flutter_app/%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6/TEXT/BasicTextUsage.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,6 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       initialRoute: "/", //名为"/"的路由作为应用的home(首页)
       theme: ThemeData(
@@ -22,7 +24,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      
+
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -49,35 +51,34 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-
     List<Widget> _list = new List();
     for (int i = 0; i < titleItems.length; i++) {
-      _list.add(buildListData(context, titleItems[i], iconItems[i], subTitleItems[i]));
+      _list.add(buildListData(
+          context, titleItems[i], iconItems[i], subTitleItems[i]));
     }
     // 分割线
     // var divideTiles = ListTile.divideTiles(context: context, tiles: _list).toList();
 
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text('Flutter ListView'),
+        title: new Text('Flutter Demo'),
       ),
-
       body: new Scrollbar(
-
         // ListView.separated写法
         child: new ListView.separated(
             itemBuilder: (context, item) {
-              return buildListData(context, titleItems[item], iconItems[item], subTitleItems[item]);
+              return buildListData(context, titleItems[item], iconItems[item],
+                  subTitleItems[item]);
             },
-            separatorBuilder: (BuildContext context, int index) => new Divider(),
-            itemCount: iconItems.length
-        ),
+            separatorBuilder: (BuildContext context, int index) =>
+                new Divider(),
+            itemCount: titleItems.length),
       ),
-
     );
   }
 
-  Widget buildListData(BuildContext context, String titleItem, Icon iconItem, String subTitleItem) {
+  Widget buildListData(BuildContext context, String titleItem, Icon iconItem,
+      String subTitleItem) {
     return new ListTile(
       leading: iconItem,
       title: new Text(
@@ -89,54 +90,51 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       trailing: new Icon(Icons.keyboard_arrow_right),
       onTap: () {
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return new AlertDialog(
-              title: new Text(
-                'ListViewAlert',
-                style: new TextStyle(
-                  color: Colors.black54,
-                  fontSize: 18.0,
-                ),
-              ),
-              content: new Text('您选择的item内容为:$titleItem'),
-            );
-          },
-        );
+        if (titleItem == "文本、字体样式") {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return BasicTextUsage();
+          }));
+        } else if (titleItem == "按钮") {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return ButtonBasicUsage();
+          }));
+        }
       },
-
     );
   }
 
   // 数据源
   List<String> titleItems = <String>[
-    'keyboard', 'print',
-    'router', 'pages',
-    'zoom_out_map', 'zoom_out',
-    'youtube_searched_for', 'wifi_tethering',
-    'wifi_lock', 'widgets',
-    'weekend', 'web',
-    '图accessible', 'ac_unit',
+    '文本、字体样式',
+    '按钮'
+    // , 'print',
+    // 'router', 'pages',
+    // 'zoom_out_map', 'zoom_out',
+    // 'youtube_searched_for', 'wifi_tethering',
+    // 'wifi_lock', 'widgets',
+    // 'weekend', 'web',
+    // '图accessible', 'ac_unit',
   ];
 
   List<Icon> iconItems = <Icon>[
-    new Icon(Icons.keyboard), new Icon(Icons.print),
-    new Icon(Icons.router), new Icon(Icons.pages),
-    new Icon(Icons.zoom_out_map), new Icon(Icons.zoom_out),
-    new Icon(Icons.youtube_searched_for), new Icon(Icons.wifi_tethering),
-    new Icon(Icons.wifi_lock), new Icon(Icons.widgets),
-    new Icon(Icons.weekend), new Icon(Icons.web),
-    new Icon(Icons.accessible), new Icon(Icons.ac_unit),
+    new Icon(Icons.keyboard), new Icon(Icons.radio_button_checked)
+    // ,
+    // new Icon(Icons.router), new Icon(Icons.pages),
+    // new Icon(Icons.zoom_out_map), new Icon(Icons.zoom_out),
+    // new Icon(Icons.youtube_searched_for), new Icon(Icons.wifi_tethering),
+    // new Icon(Icons.wifi_lock), new Icon(Icons.widgets),
+    // new Icon(Icons.weekend), new Icon(Icons.web),
+    // new Icon(Icons.accessible), new Icon(Icons.ac_unit),
   ];
 
   List<String> subTitleItems = <String>[
-    'subTitle: keyboard', 'subTitle: print',
-    'subTitle: router', 'subTitle: pages',
-    'subTitle: zoom_out_map', 'subTitle: zoom_out',
-    'subTitle: youtube_searched_for', 'subTitle: wifi_tethering',
-    'subTitle: wifi_lock', 'subTitle: widgets',
-    'subTitle: weekend', 'subTitle: web',
-    'subTitle: accessible', 'subTitle: ac_unit',
+    'subTitle: 文本的基本使用', 'subTitle: 按钮的基本使用'
+    //  ,
+    // 'subTitle: router', 'subTitle: pages',
+    // 'subTitle: zoom_out_map', 'subTitle: zoom_out',
+    // 'subTitle: youtube_searched_for', 'subTitle: wifi_tethering',
+    // 'subTitle: wifi_lock', 'subTitle: widgets',
+    // 'subTitle: weekend', 'subTitle: web',
+    // 'subTitle: accessible', 'subTitle: ac_unit',
   ];
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6/IMAGEDEMO/ImageAndIconRoute.dart';
+import 'package:flutter_app/BasicControl/IMAGEDEMO/ImageAndIconRoute.dart';
 
 class ImageBasicUsage extends StatelessWidget {
   @override
@@ -83,6 +83,18 @@ class ImageBasicUsage extends StatelessWidget {
                   }));
                 },
               ),
+              Text(
+                '\nImage缓存\n',
+                style: TextStyle(fontSize: 20.0),
+              ),
+              Text(
+                  'Flutter框架对加载过的图片是有缓存的（内存），默认最大缓存数量是1000，最大缓存空间为100M。关于Image的详细内容及原理我们将会在后面进阶部分深入介绍。\n'),
+              Text(
+                '\nICON\n',
+                style: TextStyle(fontSize: 20.0),
+              ),
+              Text(
+                  'Flutter中，可以像Web开发一样使用iconfont，iconfont即“字体图标”，它是将图标做成字体文件，然后通过指定不同的字符而显示不同的图片。\n在字体文件中，每一个字符都对应一个位码，而每一个位码对应一个显示字形，不同的字体就是指字形不同，即字符对应的字形是不同的。而在iconfont中，只是将位码对应的字形做成了图标，所以不同的字符最终就会渲染成不同的图标。\n在Flutter开发中，iconfont和图片相比有如下优势：\n1.体积小：可以减小安装包大小。\n2.矢量的：iconfont都是矢量图标，放大不会影响其清晰度。\n3.可以应用文本样式：可以像文本一样改变字体图标的颜色、大小对齐等。\n4.可以通过TextSpan和文本混用。'),
             ],
           ),
         ),

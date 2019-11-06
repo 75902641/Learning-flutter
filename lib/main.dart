@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6/BUTTON/ButtonBasicUsage.dart';
-import 'package:flutter_app/%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6/IMAGEDEMO/ImageBasicUsage.dart';
-import 'package:flutter_app/%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6/TEXT/BasicTextUsage.dart';
+import 'package:flutter_app/BasicControl/BUTTON/ButtonBasicUsage.dart';
+import 'package:flutter_app/BasicControl/IMAGEDEMO/ImageBasicUsage.dart';
+import 'package:flutter_app/BasicControl/TEXT/BasicTextUsage.dart';
 
 void main() => runApp(MyApp());
 

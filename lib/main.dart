@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6/BUTTON/ButtonBasicUsage.dart';
+import 'package:flutter_app/%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6/IMAGEDEMO/ImageBasicUsage.dart';
 import 'package:flutter_app/%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6/TEXT/BasicTextUsage.dart';
 
 void main() => runApp(MyApp());
@@ -98,6 +99,10 @@ class _MyHomePageState extends State<MyHomePage> {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
             return ButtonBasicUsage();
           }));
+        } else if (titleItem == "图片"){
+          Navigator.push(context, MaterialPageRoute(builder: (context){
+            return ImageBasicUsage();
+          }));
         }
       },
     );
@@ -106,7 +111,8 @@ class _MyHomePageState extends State<MyHomePage> {
   // 数据源
   List<String> titleItems = <String>[
     '文本、字体样式',
-    '按钮'
+    '按钮',
+    '图片'
     // , 'print',
     // 'router', 'pages',
     // 'zoom_out_map', 'zoom_out',
@@ -117,9 +123,10 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
 
   List<Icon> iconItems = <Icon>[
-    new Icon(Icons.keyboard), new Icon(Icons.radio_button_checked)
+    new Icon(Icons.keyboard), 
+    new Icon(Icons.radio_button_checked),
+    new Icon(Icons.router), new Icon(Icons.pages)
     // ,
-    // new Icon(Icons.router), new Icon(Icons.pages),
     // new Icon(Icons.zoom_out_map), new Icon(Icons.zoom_out),
     // new Icon(Icons.youtube_searched_for), new Icon(Icons.wifi_tethering),
     // new Icon(Icons.wifi_lock), new Icon(Icons.widgets),
@@ -128,13 +135,9 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
 
   List<String> subTitleItems = <String>[
-    'subTitle: 文本的基本使用', 'subTitle: 按钮的基本使用'
-    //  ,
-    // 'subTitle: router', 'subTitle: pages',
-    // 'subTitle: zoom_out_map', 'subTitle: zoom_out',
-    // 'subTitle: youtube_searched_for', 'subTitle: wifi_tethering',
-    // 'subTitle: wifi_lock', 'subTitle: widgets',
-    // 'subTitle: weekend', 'subTitle: web',
-    // 'subTitle: accessible', 'subTitle: ac_unit',
+    'subTitle: 文本的基本使用',
+    'subTitle: 按钮的基本使用',
+    'subTitle: 图片的基本使用',
+
   ];
 }

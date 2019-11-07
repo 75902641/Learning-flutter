@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/BasicControl/InputBoxAndForm/FocusTestRoute.dart';
+import 'package:flutter_app/BasicControl/InputBoxAndForm/FormTestRoute.dart';
 
 class InputBoxAndForm extends StatefulWidget {
   @override
@@ -74,7 +75,7 @@ class _InputBoxAndFormState extends State<InputBoxAndForm> {
                 style: TextStyle(fontSize: 20.0),
               ),
               Text(
-                  '监听文本变化也有两种方式：\n1.设置onChange回调，如：\n\nTextField(\n    autofocus: true,\n    onChanged: (v) {\n      print("onChange: \$v");\n    }\n)\n\n通过controller监听，如：\n\n@override\nvoid initState() {\n  //监听输入改变  \n  _unameController.addListener((){\n    print(_unameController.text);\n  });\n}\n\n两种方式相比，onChanged是专门用于监听文本变化，而controller的功能却多一些，除了能监听文本变化外，它还可以设置默认值、选择文本，下面我们看一个例子：\n\n创建一个controller:\n\nTextEditingController _selectionController =  TextEditingController();\n\n设置默认值，并从第三个字符开始选中后面的字符\n\n_selectionController.text="hello world!";\n_selectionController.selection=TextSelection(\n    baseOffset: 2,\n    extentOffset: _selectionController.text.length\n);\n\n设置controller:\nTextField(\n  controller: _selectionController,\n)\n运行效果如下'),
+                  '监听文本变化也有两种方式：\n1.设置onChange回调，如：\n\nTextField(\n    autofocus: true,\n    onChanged: (v) {\n      print("onChange: \$v");\n    }\n)\n\n通过controller���������听，如：\n\n@override\nvoid initState() {\n  //监听输入改变  \n  _unameController.addListener((){\n    print(_unameController.text);\n  });\n}\n\n两种方式相比，onChanged是专门用于监听文本变化，而controller的功能却多一些，除了能监听文本变化外，它还可以设置默认值、选择文本，下面我们看一个例子：\n\n创建一个controller:\n\nTextEditingController _selectionController =  TextEditingController();\n\n设置默认值，并从第三个字符开始选中后面的字符\n\n_selectionController.text="hello world!";\n_selectionController.selection=TextSelection(\n    baseOffset: 2,\n    extentOffset: _selectionController.text.length\n);\n\n设置controller:\nTextField(\n  controller: _selectionController,\n)\n运行效果如下'),
               TextField(
                 controller: _selectionController,
               ),
@@ -97,6 +98,61 @@ class _InputBoxAndFormState extends State<InputBoxAndForm> {
                   }));
                 },
               ),
+              Text(
+                '\n自定义样式\n',
+                style: TextStyle(fontSize: 20.0),
+              ),
+              Text(
+                  '虽然我们可以通过decoration属性来定义输入框样式，下面以自定义输入框下划线颜色为例来介绍一下：\n\nTextField(\n  decoration: InputDecoration(\n    labelText: "请输入用户名",\n    prefixIcon: Icon(Icons.person),\n    // 未获得焦点下划线设为灰色\n    enabledBorder: UnderlineInputBorder(\n      borderSide: BorderSide(color: Colors.grey),\n    ),\n    //获得焦点下划线设为蓝色\n    focusedBorder: UnderlineInputBorder(\n      borderSide: BorderSide(color: Colors.blue),\n    ),\n  ),\n),\n\n上面代码我们直接通过InputDecoration的enabledBorder和focusedBorder来分别设置了输入框在未获取焦点和获得焦点后的下划线颜色。另外，我们也可以通过主题来自定义输入框的样式，下面我们探索一下如何在不使用enabledBorder和focusedBorder的情况下来自定义下滑线颜色。\n\n由于TextField在绘制下划线时使用的颜色是主题色里面的hintColor，但提示文本颜色也是用的hintColor， 如果我们直接修改hintColor，那么下划线和提示文本的颜色都会变。值得高兴的是decoration中可以设置hintStyle，它可以覆盖hintColor，并且主题中可以通过inputDecorationTheme来设置输入框默认的decoration。所以我们可以通过主题来自定义，代码如下：\n\nTheme(\n  data: Theme.of(context).copyWith(\n      hintColor: Colors.grey[200], //定义下划线颜色\n      inputDecorationTheme: InputDecorationTheme(\n          labelStyle: TextStyle(color: Colors.grey),//定义label字体样式\n          hintStyle: TextStyle(color: Colors.grey, fontSize: 14.0)//定义提示文本样式\n      )\n  ),\n  child: Column(\n    children: <Widget>[\n      TextField(\n        decoration: InputDecoration(\n            labelText: "用户名",\n            hintText: "用户名或邮箱",\n            prefixIcon: Icon(Icons.person)\n        ),\n      ),\n      TextField(\n        decoration: InputDecoration(\n            prefixIcon: Icon(Icons.lock),\n            labelText: "密码",\n            hintText: "您的登录密码",\n            hintStyle: TextStyle(color: Colors.grey, fontSize: 13.0)\n        ),\n        obscureText: true,\n      )\n    ],\n  )\n)\n\n运行效果如图'),
+              Image.network(
+                "https://cdn.jsdelivr.net/gh/flutterchina/flutter-in-action/docs/imgs/3-28.png",
+                width: 200,
+              ),
+              Text(
+                  '我们成功的自定义了下划线颜色和提问文字样式，细心的读者可能已经发现，通过这种方式自定义后，输入框在获取焦点时，labelText不会高亮显示了，正如上图中的"用户名"本应该显示蓝色，但现在却显示为灰色，并且我们还是无法定义下划线宽度。另一种灵活的方式是直接隐藏掉TextField本身的下划线，然后通过Container去嵌套定义样式，如:\n\nContainer(\n  child: TextField(\n    keyboardType: TextInputType.emailAddress,\n    decoration: InputDecoration(\n        labelText: "Email",\n        hintText: "电子邮件地址",\n        prefixIcon: Icon(Icons.email),\n        border: InputBorder.none //隐藏下划线\n    )\n  ),\n  decoration: BoxDecoration(\n      // 下滑线浅灰色，宽度1像素\n      border: Border(bottom: BorderSide(color: Colors.grey[200], width: 1.0))\n  ),\n)\n\n运行效果'),
+              Container(
+                child: TextField(
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                      labelText: 'Email',
+                      hintText: '电子邮件地址',
+                      prefixIcon: Icon(Icons.email),
+                      border: InputBorder.none),
+                ),
+                decoration: BoxDecoration(
+                    border: Border(
+                        bottom:
+                            BorderSide(color: Colors.grey[200], width: 1.0))),
+              ),
+              Text(
+                  '\n通过这种组件组合的方式，也可以定义背景圆角等。一般来说，优先通过decoration来自定义样式，如果decoration实现不了，再用widget组合的方式。\n思考题：在这个示例中，下划线颜色是固定的，所以获得焦点后颜色仍然为灰色，如何实现点击后下滑线也变色呢？'),
+              Text(
+                '\n表单Form\n',
+                style: TextStyle(fontSize: 20.0),
+              ),
+              Text(
+                  '实际业务中，在正式向服务器提交数据前，都会对各个输入框数据进行合法性校验，但是对每一个TextField都分别进行校验将会是一件很麻烦的事。还有，如果用户想清除一组TextField的内容，除了一个一个清除有没有什么更好的办法呢？为此，Flutter提供了一个Form 组件，它可以对输入框进行分组，然后进行一些统一操作，如输入内容校验、输入框重置以及输入内容保存。'),
+              Text(
+                '\nForm\n',
+                style: TextStyle(fontSize: 20.0),
+              ),
+              Text('Form继承自StatefulWidget对象，它对应的状态类为FormState。我们先看看Form类的定义：\n\nForm({\n  @required Widget child,\n  bool autovalidate = false,\n  WillPopCallback onWillPop,\n  VoidCallback onChanged,\n})\n      autovalidate：是否自动校验输入内容；当为true时，每一个子FormField内容发生变化时都会自动校验合法性，并直接显示错误信息。否则，需要通过调用FormState.validate()来手动校验。\n      onWillPop：决定Form所在的路由是否可以直接返回（如点击返回按钮），该回调返回一个Future对象，如果Future的最终结果是false，则当前路由不会返回；如果为true，则会返回到上一个路由。此属性通常用于拦截返回按钮。\n      onChanged：Form的任意一个子FormField内容发生变化时会触发此回调。'),
+              Text(
+                '\nFormField\n',
+                style: TextStyle(fontSize: 20.0),
+              ),
+              Text('Form的子孙元素必须是FormField类型，FormField是一个抽象类，定义几个属性，FormState内部通过它们来完成操作，FormField部分定义如下：\n\nconst FormField({\n  ...\n  FormFieldSetter<T> onSaved, //保存回调\n  FormFieldValidator<T>  validator, //验证回调\n  T initialValue, //初始值\n  bool autovalidate = false, //是否自动校验。\n})\n\n为了方便使用，Flutter提供了一个TextFormField组件，它继承自FormField类，也是TextField的一个包装类，所以除了FormField定义的属性之外，它还包括TextField的属性。'),
+Text(
+                '\nFormState\n',
+                style: TextStyle(fontSize: 20.0),
+              ),
+              Text('FormState为Form的State类，可以通过Form.of()或GlobalKey获得。我们可以通过它来对Form的子孙FormField进行统一操作。我们看看其常用的三个方法：\n      FormState.validate()：调用此方法后，会调用Form子孙FormField的validate回调，如果有一个校验失败，则返回false，所有校验失败项都会返回用户返回的错误提示。\n      FormState.save()：调用此方法后，会调用Form子孙FormField的save回调，用于保存表单内容\n      FormState.reset()：调用此方法后，会将子孙FormField的内容清空。\n\n示例代码请看demo里源码\n'),
+              RaisedButton(child: Text('示例演示'),onPressed: (){
+                 Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return FormTestRoute();
+                  }));
+              },),
+              Text('\n\n\n\n\n')
             ],
           ),
         ),

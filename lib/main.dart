@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/BasicControl/BUTTON/ButtonBasicUsage.dart';
 import 'package:flutter_app/BasicControl/IMAGEDEMO/ImageBasicUsage.dart';
 import 'package:flutter_app/BasicControl/TEXT/BasicTextUsage.dart';
+import 'BasicControl/InputBoxAndForm/InputBoxAndForm.dart';
 import 'BasicControl/RadioSwitchAndCheckBox/RadioSwitchAndCheckBox.dart';
 
 void main() => runApp(MyApp());
@@ -108,6 +109,10 @@ class _MyHomePageState extends State<MyHomePage> {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
             return RadioSwitchAndCheckBox();
           }));
+        } else if (titleItem == '输入框和表单'){
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return InputBoxAndForm();
+          }));
         }
       },
     );
@@ -118,7 +123,8 @@ class _MyHomePageState extends State<MyHomePage> {
     '文本、字体样式',
     '按钮',
     '图片',
-    '单选开关和复选框'
+    '单选开关和复选框',
+    '输入框和表单'
     // , 'print',
     // 'router', 'pages',
     // 'zoom_out_map', 'zoom_out',
@@ -133,7 +139,7 @@ class _MyHomePageState extends State<MyHomePage> {
     new Icon(Icons.radio_button_checked),
     new Icon(Icons.router), new Icon(Icons.pages),
     new Icon(Icons.radio_button_unchecked),
-
+    new Icon(Icons.keyboard)
     // ,
     // new Icon(Icons.zoom_out_map), new Icon(Icons.zoom_out),
     // new Icon(Icons.youtube_searched_for), new Icon(Icons.wifi_tethering),
@@ -146,6 +152,7 @@ class _MyHomePageState extends State<MyHomePage> {
     'subTitle: 文本的基本使用',
     'subTitle: 按钮的基本使用',
     'subTitle: 图片和ICON',
-    'subTitle: 单选开关和复选框'
+    'subTitle: 单选开关和复选框',
+    'subTitle: 输入框及表单'
   ];
 }

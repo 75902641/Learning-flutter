@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/BasicControl/BUTTON/ButtonBasicUsage.dart';
 import 'package:flutter_app/BasicControl/IMAGEDEMO/ImageBasicUsage.dart';
-import 'package:flutter_app/BasicControl/IntroductionToLayoutClassComponents/IntroductionToLayoutClassComponents.dart';
-import 'package:flutter_app/BasicControl/LinearLayout/LinearLayoutRowColumn.dart';
 import 'package:flutter_app/BasicControl/ProgressIndicator/ProgressIndicators.dart';
 import 'package:flutter_app/BasicControl/TEXT/BasicTextUsage.dart';
+import 'package:flutter_app/LayoutClassComponent/FlexibleLayout/FlexibleLayout.dart';
+import 'package:flutter_app/LayoutClassComponent/IntroductionToLayoutClassComponents/IntroductionToLayoutClassComponents.dart';
+import 'package:flutter_app/LayoutClassComponent/LinearLayout/LinearLayoutRowColumn.dart';
 import 'BasicControl/InputBoxAndForm/InputBoxAndForm.dart';
 import 'BasicControl/RadioSwitchAndCheckBox/RadioSwitchAndCheckBox.dart';
 
@@ -128,6 +129,10 @@ class _MyHomePageState extends State<MyHomePage> {
           Navigator.push(context, MaterialPageRoute(builder: (context){
             return LinearLayoutRowColumn();
           }));
+        } else if (titleItem == '弹性布局'){
+          Navigator.push(context, MaterialPageRoute(builder: (context){
+            return FlexibleLayout();
+          }));
         }
         
       },
@@ -144,6 +149,7 @@ class _MyHomePageState extends State<MyHomePage> {
     '进度指示器',
     '布局类组件简介',
     '线性布局',
+    '弹性布局'
     // , 'print',
     // 'router', 'pages',
     // 'zoom_out_map', 'zoom_out',
@@ -161,7 +167,8 @@ class _MyHomePageState extends State<MyHomePage> {
     new Icon(Icons.slideshow),
     new Icon(Icons.slideshow),
     new Icon(Icons.zoom_out_map),
-    // new Icon(Icons.zoom_out_map), new Icon(Icons.zoom_out),
+    new Icon(Icons.zoom_out)
+    
     // new Icon(Icons.youtube_searched_for), new Icon(Icons.wifi_tethering),
     // new Icon(Icons.wifi_lock), new Icon(Icons.widgets),
     // new Icon(Icons.weekend), new Icon(Icons.web),
@@ -176,6 +183,7 @@ class _MyHomePageState extends State<MyHomePage> {
     'subTitle: 输入框及表单',
     'subTitle: 进度指示器',
     'subTitle: 布局类组件简介',
-    'subTitle: 线性布局（Row和Column）'
+    'subTitle: 线性布局（Row和Column）',
+    'subTitle: 弹性布局',
   ];
 }

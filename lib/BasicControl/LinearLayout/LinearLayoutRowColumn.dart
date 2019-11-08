@@ -73,7 +73,58 @@ class _LinearLayoutRowColumnState extends State<LinearLayoutRowColumn> {
                   Text(" I am Jack "),
                 ],
               ),
-              Text('\n解释：第一个Row很简单，默认为居中对齐；第二个Row，由于mainAxisSize值为MainAxisSize.min，Row的宽度等于两个Text的宽度和，所以对齐是无意义的，所以会从左往右显示；第三个Row设置textDirection值为TextDirection.rtl，所以子组件会从右向左的顺序排列，而此时MainAxisAlignment.end表示左对齐，所以最终显示结果就是图中第三行的样子；第四个Row测试的是纵轴的对齐方式，由于两个子Text字体不一样，所以其高度也不同，我们指定了verticalDirection值为VerticalDirection.up，即从低向顶排列，而此时crossAxisAlignment值为CrossAxisAlignment.start表示底对齐。\n')
+              Text(
+                  '\n解释：第一个Row很简单，默认为居中对齐；第二个Row，由于mainAxisSize值为MainAxisSize.min，Row的宽度等于两个Text的宽度和，所以对齐是无意义的，所以会从左往右显示；第三个Row设置textDirection值为TextDirection.rtl，所以子组件会从右向左的顺序排列，而此时MainAxisAlignment.end表示左对齐，所以最终显示结果就是图中第三行的样子；第四个Row测试的是纵轴的对齐方式，由于两个子Text字体不一样，所以其高度也不同，我们指定了verticalDirection值为VerticalDirection.up，即从低向顶排列，而此时crossAxisAlignment值为CrossAxisAlignment.start表示底对齐。\n'),
+              Text(
+                'Column\n',
+                style: TextStyle(fontSize: 20.0),
+              ),
+              Text(
+                  "Column可以在垂直方向排列其子组件。参数和Row一样，不同的是布局方向为垂直，主轴纵轴正好相反，读者可类比Row来理解，下面看一个例子：\n\nimport 'package:flutter/material.dart';\nclass CenterColumnRoute extends StatelessWidget {\n  @override\n  Widget build(BuildContext context) {\n    return Column(\n      crossAxisAlignment: CrossAxisAlignment.center,\n      children: <Widget>[\n        Text('hi'),\n        Text('world'),\n      ],\n    );\n  }\n}\n\n运行效果如下"),
+              Text("hi"),
+              Text("world"),
+              Text(
+                  '\n解释：\n      由于我们没有指定Column的mainAxisSize，所以使用默认值MainAxisSize.max，则Column会在垂直方向占用尽可能多的空间，此例中为屏幕高度。\n      由于我们指定了 crossAxisAlignment 属性为CrossAxisAlignment.center，那么子项在Column纵轴方向（此时为水平方向）会居中对齐。注意，在水平方向对齐是有边界的，总宽度为Column占用空间的实际宽度，而实际的宽度取决于子项中宽度最大的Widget。在本例中，Column有两个子Widget，而显示“world”的Text宽度最大，所以Column的实际宽度则为Text("world") 的宽度，所以居中对齐后Text("hi")会显示在Text("world")的中间部分。\n\n实际上，Row和Column都只会在主轴方向占用尽可能大的空间，而纵轴的长度则取决于他们最大子元素的长度。如果我们想让本例中的两个文本控件在整个手机屏幕中间对齐，我们有两种方法：\n\n      将Column的宽度指定为屏幕宽度；这很简单，我们可以通过ConstrainedBox或SizedBox（我们将在后面章节中专门介绍这两个Widget）来强制更改宽度限制，例如：\n\nConstrainedBox(\n  constraints: BoxConstraints(minWidth: double.infinity),\n  child: Column(\n    crossAxisAlignment: CrossAxisAlignment.center,\n    children: <Widget>[\n      Text("hi"),\n      Text("world"),\n    ],\n  ),\n);\n\n将minWidth设为double.infinity，可以使宽度占用尽可能多的空间。\n\n     使用Center Widget；我们将在后面章节中介绍。\n'),
+              Text(
+                '特殊情况\n',
+                style: TextStyle(fontSize: 20.0),
+              ),
+              Text(
+                  '如果Row里面嵌套Row，或者Column里面再嵌套Column，那么只有对最外面的Row或Column会占用尽可能大的空间，里面Row或Column所占用的空间为实际大小，下面以Column为例说明：\n\nContainer(\n  color: Colors.green,\n  child: Padding(\n    padding: const EdgeInsets.all(16.0),\n    child: Column(\n      crossAxisAlignment: CrossAxisAlignment.start,\n      mainAxisSize: MainAxisSize.max, //有效，外层Colum高度为整个屏幕\n      children: <Widget>[\n        Container(\n          color: Colors.red,\n          child: Column(\n            mainAxisSize: MainAxisSize.max,//无效，内层Colum高度为实际高度 \n            children: <Widget>[\n              Text("hello world "),\n              Text("I am Jack "),\n            ],\n          ),\n        )\n      ],\n    ),\n  ),\n);\n\n运行效果如下\n'),
+              Container(
+                color: Colors.green,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.max, //有效，外层Colum高度为整个屏幕
+                    children: <Widget>[
+                      Container(
+                        color: Colors.red,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max, //无效，内层Colum高度为实际高度
+                          children: <Widget>[
+                            Text("hello world "),
+                            Text("I am Jack "),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              Text('\n下图\n'),
+              Image.network(
+"https://cdn.jsdelivr.net/gh/flutterchina/flutter-in-action/docs/imgs/4-3.png",
+width: 200,
+              ),
+              Text(
+                '\n如果要让里面的Column占满外部Column，可以使用Expanded 组件：\n\nExpanded(\n  child: Container(\n    color: Colors.red,\n    child: Column(\n      mainAxisAlignment: MainAxisAlignment.center, //垂直方向居中对齐\n      children: <Widget>[\n        Text("hello world "),\n        Text("I am Jack "),\n      ],\n    ),\n  ),\n)\n\n'
+              ),
+              Image.network(
+"https://cdn.jsdelivr.net/gh/flutterchina/flutter-in-action/docs/imgs/4-4.png",
+width: 200,
+              ),
             ],
           ),
         ),

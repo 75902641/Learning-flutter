@@ -64,32 +64,55 @@ class _StreamingLayoutState extends State<StreamingLayout> {
                 'Flow',
                 style: TextStyle(fontSize: 20.0),
               ),
-              Text('我们一般很少会使用Flow，因为其过于复杂，需要自己实现子widget的位置转换，在很多场景下首先要考虑的是Wrap是否满足需求。Flow主要用于一些需要自定义布局策略或性能要求较高(如动画中)的场景。Flow有如下优点：\n      性能好；Flow是一个对子组件尺寸以及位置调整非常高效的控件，Flow用转换矩阵在对子组件进行位置调整的时候进行了优化：在Flow定位过后，如果子组件的尺寸或者位置发生了变化，在FlowDelegate中的paintChildren()方法中调用context.paintChild 进行重绘，而context.paintChild在重绘时使用了转换矩阵，并没有实际调整组件位置。\n      灵活；由于我们需要自己实现FlowDelegate的paintChildren()方法，所以我们需要自己计算每一个组件的位置，因此，可以自定义布局策略。\n缺点：\n     使用复杂。\n      不能自适应子组件大小，必须通过指定父容器大小或实现TestFlowDelegate的getSize返回固定大小。\n\n示例：\n我们对六个色块进行自定义流式布局：\n\nFlow(\n  delegate: TestFlowDelegate(margin: EdgeInsets.all(10.0)),\n  children: <Widget>[\n    new Container(width: 80.0, height:80.0, color: Colors.red,),\n    new Container(width: 80.0, height:80.0, color: Colors.green,),\n    new Container(width: 80.0, height:80.0, color: Colors.blue,),\n    new Container(width: 80.0, height:80.0,  color: Colors.yellow,),\n    new Container(width: 80.0, height:80.0, color: Colors.brown,),\n    new Container(width: 80.0, height:80.0,  color: Colors.purple,),\n  ],\n)\n\n实现TestFlowDelegate:\n\nclass TestFlowDelegate extends FlowDelegate {\n  EdgeInsets margin = EdgeInsets.zero;\n  TestFlowDelegate({this.margin});\n  @override\n  void paintChildren(FlowPaintingContext context) {\n    var x = margin.left;\n    var y = margin.top;\n    //计算每一个子widget的位置  \n    for (int i = 0; i < context.childCount; i++) {\n      var w = context.getChildSize(i).width + x + margin.right;\n      if (w < context.size.width) {\n        context.paintChild(i,transform: new Matrix4.translationValues(x, y, 0.0));\n        x = w + margin.left;\n      } else {\n        x = margin.left;\n        y += context.getChildSize(i).height + margin.top + margin.bottom;\n        //绘制子widget(有优化)  \n        context.paintChild(i,transform: new Matrix4.translationValues( x, y, 0.0));\n         x += context.getChildSize(i).width + margin.left + margin.right;\n      }\n    }\n  }\n\n  @override\n  getSize(BoxConstraints constraints){\n    //指定Flow的大小  \n    return Size(double.infinity,200.0);\n  }\n\n  @override\n  bool shouldRepaint(FlowDelegate oldDelegate) {\n    return oldDelegate != this;\n  }\n}\n\n运行效果\n'),
+              Text(
+                  '我们一般很少会使用Flow，因为其过于复杂，需要自己实现子widget的位置转换，在很多场景下首先要考虑的是Wrap是否满足需求。Flow主要用于一些需要自定义布局策略或性能要求较高(如动画中)的场景。Flow有如下优点：\n      性能好；Flow是一个对子组件尺寸以及位置调整非常高效的控件，Flow用转换矩阵在对子组件进行位置调整的时候进行了优化：在Flow定位过后，如果子组件的尺寸或者位置发生了变化，在FlowDelegate中的paintChildren()方法中调用context.paintChild 进行重绘，而context.paintChild在重绘时使用了转换矩阵，并没有实际调整组件位置。\n      灵活；由于我们需要自己实现FlowDelegate的paintChildren()方法，所以我们需要自己计算每一个组件的位置，因此，可以自定义布局策略。\n缺点：\n     使用复杂。\n      不能自适应子组件大小，必须通过指定父容器大小或实现TestFlowDelegate的getSize返回固定大小。\n\n示例：\n我们对六个色块进行自定义流式布局：\n\nFlow(\n  delegate: TestFlowDelegate(margin: EdgeInsets.all(10.0)),\n  children: <Widget>[\n    new Container(width: 80.0, height:80.0, color: Colors.red,),\n    new Container(width: 80.0, height:80.0, color: Colors.green,),\n    new Container(width: 80.0, height:80.0, color: Colors.blue,),\n    new Container(width: 80.0, height:80.0,  color: Colors.yellow,),\n    new Container(width: 80.0, height:80.0, color: Colors.brown,),\n    new Container(width: 80.0, height:80.0,  color: Colors.purple,),\n  ],\n)\n\n实现TestFlowDelegate:\n\nclass TestFlowDelegate extends FlowDelegate {\n  EdgeInsets margin = EdgeInsets.zero;\n  TestFlowDelegate({this.margin});\n  @override\n  void paintChildren(FlowPaintingContext context) {\n    var x = margin.left;\n    var y = margin.top;\n    //计算每一个子widget的位置  \n    for (int i = 0; i < context.childCount; i++) {\n      var w = context.getChildSize(i).width + x + margin.right;\n      if (w < context.size.width) {\n        context.paintChild(i,transform: new Matrix4.translationValues(x, y, 0.0));\n        x = w + margin.left;\n      } else {\n        x = margin.left;\n        y += context.getChildSize(i).height + margin.top + margin.bottom;\n        //绘制子widget(有优化)  \n        context.paintChild(i,transform: new Matrix4.translationValues( x, y, 0.0));\n         x += context.getChildSize(i).width + margin.left + margin.right;\n      }\n    }\n  }\n\n  @override\n  getSize(BoxConstraints constraints){\n    //指定Flow的大小  \n    return Size(double.infinity,200.0);\n  }\n\n  @override\n  bool shouldRepaint(FlowDelegate oldDelegate) {\n    return oldDelegate != this;\n  }\n}\n\n运行效果\n'),
               Flow(
-  delegate: TestFlowDelegate(margin: EdgeInsets.all(10.0)),
-  children: <Widget>[
-    new Container(width: 80.0, height:80.0, color: Colors.red,),
-    new Container(width: 80.0, height:80.0, color: Colors.green,),
-    new Container(width: 80.0, height:80.0, color: Colors.blue,),
-    new Container(width: 80.0, height:80.0,  color: Colors.yellow,),
-    new Container(width: 80.0, height:80.0, color: Colors.brown,),
-    new Container(width: 80.0, height:80.0,  color: Colors.purple,),
-  ],
-)
+                delegate: TestFlowDelegate(margin: EdgeInsets.all(10.0)),
+                children: <Widget>[
+                  new Container(
+                    width: 80.0,
+                    height: 80.0,
+                    color: Colors.red,
+                  ),
+                  new Container(
+                    width: 80.0,
+                    height: 80.0,
+                    color: Colors.green,
+                  ),
+                  new Container(
+                    width: 80.0,
+                    height: 80.0,
+                    color: Colors.blue,
+                  ),
+                  new Container(
+                    width: 80.0,
+                    height: 80.0,
+                    color: Colors.yellow,
+                  ),
+                  new Container(
+                    width: 80.0,
+                    height: 80.0,
+                    color: Colors.brown,
+                  ),
+                  new Container(
+                    width: 80.0,
+                    height: 80.0,
+                    color: Colors.purple,
+                  ),
+                ],
+              )
               // RaisedButton(
               //   child: Text('查看效果'),
               //   onPressed: (){
 
               //   },
-              // )  
+              // )
             ],
           ),
         ),
       ),
     );
   }
-
-  
 }
 
 class TestFlowDelegate extends FlowDelegate {
@@ -99,30 +122,28 @@ class TestFlowDelegate extends FlowDelegate {
   void paintChildren(FlowPaintingContext context) {
     var x = margin.left;
     var y = margin.top;
-    //计算每一个子widget的位置  
+    //计算每一个子widget的位置
     for (int i = 0; i < context.childCount; i++) {
       var w = context.getChildSize(i).width + x + margin.right;
       if (w < context.size.width) {
         context.paintChild(i,
-            transform: new Matrix4.translationValues(
-                x, y, 0.0));
+            transform: new Matrix4.translationValues(x, y, 0.0));
         x = w + margin.left;
       } else {
         x = margin.left;
         y += context.getChildSize(i).height + margin.top + margin.bottom;
-        //绘制子widget(有优化)  
+        //绘制子widget(有优化)
         context.paintChild(i,
-            transform: new Matrix4.translationValues(
-                x, y, 0.0));
-         x += context.getChildSize(i).width + margin.left + margin.right;
+            transform: new Matrix4.translationValues(x, y, 0.0));
+        x += context.getChildSize(i).width + margin.left + margin.right;
       }
     }
   }
 
   @override
-  getSize(BoxConstraints constraints){
-    //指定Flow的大小  
-    return Size(double.infinity,200.0);
+  getSize(BoxConstraints constraints) {
+    //指定Flow的大小
+    return Size(double.infinity, 200.0);
   }
 
   @override

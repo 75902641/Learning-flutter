@@ -3,6 +3,7 @@ import 'package:flutter_app/BasicControl/BUTTON/ButtonBasicUsage.dart';
 import 'package:flutter_app/BasicControl/IMAGEDEMO/ImageBasicUsage.dart';
 import 'package:flutter_app/BasicControl/ProgressIndicator/ProgressIndicators.dart';
 import 'package:flutter_app/BasicControl/TEXT/BasicTextUsage.dart';
+import 'package:flutter_app/LayoutClassComponent/CascadingLayout/CascadingLayout.dart';
 import 'package:flutter_app/LayoutClassComponent/FlexibleLayout/FlexibleLayout.dart';
 import 'package:flutter_app/LayoutClassComponent/IntroductionToLayoutClassComponents/IntroductionToLayoutClassComponents.dart';
 import 'package:flutter_app/LayoutClassComponent/LinearLayout/LinearLayoutRowColumn.dart';
@@ -138,6 +139,10 @@ class _MyHomePageState extends State<MyHomePage> {
           Navigator.push(context, MaterialPageRoute(builder: (context){
             return StreamingLayout();
           }));
+        } else if (titleItem == '层叠布局'){
+          Navigator.push(context, MaterialPageRoute(builder: (context){
+            return CascadingLayout();
+          }));
         }
         
       },
@@ -155,7 +160,8 @@ class _MyHomePageState extends State<MyHomePage> {
     '布局类组件简介',
     '线性布局',
     '弹性布局',
-    '流式布局'
+    '流式布局',
+    '层叠布局'
     
   ];
 
@@ -169,7 +175,7 @@ class _MyHomePageState extends State<MyHomePage> {
     new Icon(Icons.zoom_out_map),
     new Icon(Icons.zoom_out),
     new Icon(Icons.youtube_searched_for), 
-    // new Icon(Icons.wifi_tethering),
+     new Icon(Icons.wifi_tethering),
     // new Icon(Icons.wifi_lock), new Icon(Icons.widgets),
     // new Icon(Icons.weekend), new Icon(Icons.web),
     // new Icon(Icons.accessible), new Icon(Icons.ac_unit),
@@ -184,7 +190,8 @@ class _MyHomePageState extends State<MyHomePage> {
     'subTitle: 进度指示器',
     'subTitle: 布局类组件简介',
     'subTitle: 线性布局（Row和Column）',
-    'subTitle: 弹性布局',
-    'subTitle: 流式布局'
+    'subTitle: 弹性布局（Flex）',
+    'subTitle: 流式布局（Wrap、Flow）',
+    'subTitle: 层叠布局（Stack、Positioned）'
   ];
 }

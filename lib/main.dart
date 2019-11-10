@@ -4,6 +4,7 @@ import 'package:flutter_app/BasicControl/IMAGEDEMO/ImageBasicUsage.dart';
 import 'package:flutter_app/BasicControl/ProgressIndicator/ProgressIndicators.dart';
 import 'package:flutter_app/BasicControl/TEXT/BasicTextUsage.dart';
 import 'package:flutter_app/ContainerClassWidget/Padding/PaddingClass.dart';
+import 'package:flutter_app/ContainerClassWidget/SizeLimitClassContainer/SizeLimitClassContainer.dart';
 import 'package:flutter_app/LayoutClassComponent/AlignmentAndRelativePositioning/AlignmentAndRelativePositioning.dart';
 import 'package:flutter_app/LayoutClassComponent/CascadingLayout/CascadingLayout.dart';
 import 'package:flutter_app/LayoutClassComponent/FlexibleLayout/FlexibleLayout.dart';
@@ -149,9 +150,13 @@ class _MyHomePageState extends State<MyHomePage> {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
             return AlignmentAndRelativePositioning();
           }));
-        } else if (titleItem == '填充'){
-          Navigator.push(context, MaterialPageRoute(builder: (context){
+        } else if (titleItem == '填充') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
             return PaddingClass();
+          }));
+        } else if (titleItem == '尺寸限制类容器') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return SizeLimitClassContainer();
           }));
         }
       },
@@ -173,6 +178,7 @@ class _MyHomePageState extends State<MyHomePage> {
     '层叠布局',
     '对齐与相对定位',
     '填充',
+    '尺寸限制类容器',
   ];
 
   List<Icon> iconItems = <Icon>[
@@ -187,8 +193,9 @@ class _MyHomePageState extends State<MyHomePage> {
     new Icon(Icons.youtube_searched_for),
     new Icon(Icons.wifi_tethering),
     new Icon(Icons.wifi_lock),
-     new Icon(Icons.widgets),
-    // new Icon(Icons.weekend), new Icon(Icons.web),
+    new Icon(Icons.widgets),
+    new Icon(Icons.weekend),
+    //  new Icon(Icons.web),
     // new Icon(Icons.accessible), new Icon(Icons.ac_unit),
   ];
 
@@ -206,5 +213,6 @@ class _MyHomePageState extends State<MyHomePage> {
     'subTitle: 层叠布局（Stack、Positioned）',
     'subTitle: 对齐与相对定位（Align）',
     'subTitle: 填充（Padding）',
+    'subTitle: 尺寸限制类容器'
   ];
 }

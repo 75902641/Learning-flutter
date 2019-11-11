@@ -6,6 +6,7 @@ import 'package:flutter_app/BasicControl/TEXT/BasicTextUsage.dart';
 import 'package:flutter_app/ContainerClassWidget/Container/ContainerClass.dart';
 import 'package:flutter_app/ContainerClassWidget/DecorativeContainer/DecorativeContainer.dart';
 import 'package:flutter_app/ContainerClassWidget/Padding/PaddingClass.dart';
+import 'package:flutter_app/ContainerClassWidget/ScaffoldTabBar/ScaffoldTabBarClass.dart';
 import 'package:flutter_app/ContainerClassWidget/SizeLimitClassContainer/SizeLimitClassContainer.dart';
 import 'package:flutter_app/ContainerClassWidget/Transform/TransformClass.dart';
 import 'package:flutter_app/LayoutClassComponent/AlignmentAndRelativePositioning/AlignmentAndRelativePositioning.dart';
@@ -173,6 +174,10 @@ class _MyHomePageState extends State<MyHomePage> {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
             return ContainerClass();
           }));
+        } else if (titleItem == 'Scaffold、TabBar、底部导航'){
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return ScaffoldTabBarClass();
+          }));
         }
       },
     );
@@ -196,7 +201,8 @@ class _MyHomePageState extends State<MyHomePage> {
     '尺寸限制类容器',
     '装饰容器DecoratedBox',
     '变换',
-    'Container'
+    'Container',
+    'Scaffold、TabBar、底部导航',
   ];
 
   List<Icon> iconItems = <Icon>[
@@ -216,6 +222,7 @@ class _MyHomePageState extends State<MyHomePage> {
     new Icon(Icons.web),
     new Icon(Icons.accessible), 
     new Icon(Icons.ac_unit),
+    new Icon(Icons.keyboard),
 
   ];
 
@@ -236,6 +243,7 @@ class _MyHomePageState extends State<MyHomePage> {
     'subTitle: 尺寸限制类容器',
     'subTitle: 装饰容器DecoratedBox',
     'subTitle: 变换（Transform）',
-    'subTitle: Container容器'
+    'subTitle: Container容器',
+    'subTitle: Scaffold、TabBar、底部导航'
   ];
 }

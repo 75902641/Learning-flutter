@@ -3,6 +3,7 @@ import 'package:flutter_app/BasicControl/BUTTON/ButtonBasicUsage.dart';
 import 'package:flutter_app/BasicControl/IMAGEDEMO/ImageBasicUsage.dart';
 import 'package:flutter_app/BasicControl/ProgressIndicator/ProgressIndicators.dart';
 import 'package:flutter_app/BasicControl/TEXT/BasicTextUsage.dart';
+import 'package:flutter_app/ContainerClassWidget/Container/ContainerClass.dart';
 import 'package:flutter_app/ContainerClassWidget/DecorativeContainer/DecorativeContainer.dart';
 import 'package:flutter_app/ContainerClassWidget/Padding/PaddingClass.dart';
 import 'package:flutter_app/ContainerClassWidget/SizeLimitClassContainer/SizeLimitClassContainer.dart';
@@ -168,6 +169,10 @@ class _MyHomePageState extends State<MyHomePage> {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
             return TransformClass();
           }));
+        } else if (titleItem == 'Container'){
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return ContainerClass();
+          }));
         }
       },
     );
@@ -191,6 +196,7 @@ class _MyHomePageState extends State<MyHomePage> {
     '尺寸限制类容器',
     '装饰容器DecoratedBox',
     '变换',
+    'Container'
   ];
 
   List<Icon> iconItems = <Icon>[
@@ -209,7 +215,7 @@ class _MyHomePageState extends State<MyHomePage> {
     new Icon(Icons.weekend),
     new Icon(Icons.web),
     new Icon(Icons.accessible), 
-    // new Icon(Icons.ac_unit),
+    new Icon(Icons.ac_unit),
 
   ];
 
@@ -229,6 +235,7 @@ class _MyHomePageState extends State<MyHomePage> {
     'subTitle: 填充（Padding）',
     'subTitle: 尺寸限制类容器',
     'subTitle: 装饰容器DecoratedBox',
-    'subTitle: 变换（Transform）'
+    'subTitle: 变换（Transform）',
+    'subTitle: Container容器'
   ];
 }

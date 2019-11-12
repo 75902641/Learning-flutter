@@ -3,6 +3,7 @@ import 'package:flutter_app/BasicControl/BUTTON/ButtonBasicUsage.dart';
 import 'package:flutter_app/BasicControl/IMAGEDEMO/ImageBasicUsage.dart';
 import 'package:flutter_app/BasicControl/ProgressIndicator/ProgressIndicators.dart';
 import 'package:flutter_app/BasicControl/TEXT/BasicTextUsage.dart';
+import 'package:flutter_app/ContainerClassWidget/Clip/ClipClass.dart';
 import 'package:flutter_app/ContainerClassWidget/Container/ContainerClass.dart';
 import 'package:flutter_app/ContainerClassWidget/DecorativeContainer/DecorativeContainer.dart';
 import 'package:flutter_app/ContainerClassWidget/Padding/PaddingClass.dart';
@@ -170,13 +171,17 @@ class _MyHomePageState extends State<MyHomePage> {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
             return TransformClass();
           }));
-        } else if (titleItem == 'Container'){
+        } else if (titleItem == 'Container') {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
             return ContainerClass();
           }));
-        } else if (titleItem == 'Scaffold、TabBar、底部导航'){
+        } else if (titleItem == 'Scaffold、TabBar、底部导航') {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
             return ScaffoldTabBarClass();
+          }));
+        } else if (titleItem == '剪裁') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return ClipClass();
           }));
         }
       },
@@ -203,12 +208,14 @@ class _MyHomePageState extends State<MyHomePage> {
     '变换',
     'Container',
     'Scaffold、TabBar、底部导航',
+    '剪裁',
   ];
 
   List<Icon> iconItems = <Icon>[
     new Icon(Icons.keyboard),
     new Icon(Icons.radio_button_checked),
-    new Icon(Icons.router), new Icon(Icons.pages),
+    new Icon(Icons.router),
+    new Icon(Icons.pages),
     new Icon(Icons.radio_button_unchecked),
     new Icon(Icons.slideshow),
     new Icon(Icons.slideshow),
@@ -220,10 +227,10 @@ class _MyHomePageState extends State<MyHomePage> {
     new Icon(Icons.widgets),
     new Icon(Icons.weekend),
     new Icon(Icons.web),
-    new Icon(Icons.accessible), 
+    new Icon(Icons.accessible),
     new Icon(Icons.ac_unit),
     new Icon(Icons.keyboard),
-
+    new Icon(Icons.radio_button_checked),
   ];
 
   List<String> subTitleItems = <String>[
@@ -244,6 +251,7 @@ class _MyHomePageState extends State<MyHomePage> {
     'subTitle: 装饰容器DecoratedBox',
     'subTitle: 变换（Transform）',
     'subTitle: Container容器',
-    'subTitle: Scaffold、TabBar、底部导航'
+    'subTitle: Scaffold、TabBar、底部导航',
+    'subTitle: 剪裁（Clip）',
   ];
 }

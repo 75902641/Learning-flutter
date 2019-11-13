@@ -17,6 +17,7 @@ import 'package:flutter_app/LayoutClassComponent/IntroductionToLayoutClassCompon
 import 'package:flutter_app/LayoutClassComponent/LinearLayout/LinearLayoutRowColumn.dart';
 import 'package:flutter_app/LayoutClassComponent/StreamingLayout/StreamingLayout.dart';
 import 'package:flutter_app/ScrollableComponent/IntroductionToScrollableComponents/IntroductionToScrollableComponents.dart';
+import 'package:flutter_app/ScrollableComponent/SingleChildScrollView/SingleChildScrollViewClass.dart';
 import 'BasicControl/InputBoxAndForm/InputBoxAndForm.dart';
 import 'BasicControl/RadioSwitchAndCheckBox/RadioSwitchAndCheckBox.dart';
 
@@ -188,6 +189,10 @@ class _MyHomePageState extends State<MyHomePage> {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
             return IntroductionToScrollableComponents();
           }));
+        } else if (titleItem == 'SingleChildScrollView') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return SingleChildScrollViewClass();
+          }));
         }
       },
     );
@@ -215,6 +220,7 @@ class _MyHomePageState extends State<MyHomePage> {
     'Scaffold、TabBar、底部导航',
     '剪裁',
     '可滚动组件简介',
+    'SingleChildScrollView'
   ];
 
   List<Icon> iconItems = <Icon>[
@@ -238,6 +244,7 @@ class _MyHomePageState extends State<MyHomePage> {
     new Icon(Icons.keyboard),
     new Icon(Icons.radio_button_checked),
     new Icon(Icons.router),
+    new Icon(Icons.pages),
   ];
 
   List<String> subTitleItems = <String>[
@@ -260,6 +267,7 @@ class _MyHomePageState extends State<MyHomePage> {
     'subTitle: Container容器',
     'subTitle: Scaffold、TabBar、底部导航',
     'subTitle: 剪裁（Clip）',
-    'subTitle: 可滚动组件简介'
+    'subTitle: 可滚动组件简介',
+    'subTitle: SingleChildScrollView'
   ];
 }

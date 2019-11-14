@@ -16,6 +16,7 @@ import 'package:flutter_app/LayoutClassComponent/FlexibleLayout/FlexibleLayout.d
 import 'package:flutter_app/LayoutClassComponent/IntroductionToLayoutClassComponents/IntroductionToLayoutClassComponents.dart';
 import 'package:flutter_app/LayoutClassComponent/LinearLayout/LinearLayoutRowColumn.dart';
 import 'package:flutter_app/LayoutClassComponent/StreamingLayout/StreamingLayout.dart';
+import 'package:flutter_app/ScrollableComponent/CustomScrollView/CustomScrollViewClass.dart';
 import 'package:flutter_app/ScrollableComponent/GridView/GridViewClass.dart';
 import 'package:flutter_app/ScrollableComponent/IntroductionToScrollableComponents/IntroductionToScrollableComponents.dart';
 import 'package:flutter_app/ScrollableComponent/ListView/ListViewClass.dart';
@@ -195,14 +196,18 @@ class _MyHomePageState extends State<MyHomePage> {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
             return SingleChildScrollViewClass();
           }));
-        } else if (titleItem == 'ListView'){
+        } else if (titleItem == 'ListView') {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
             return ListViewClass();
           }));
-        } else if (titleItem == 'GridView'){
+        } else if (titleItem == 'GridView') {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
             return GridViewClass();
           }));
+        } else if (titleItem == 'CustomScrollView') {
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return CustomScrollViewClass();
+            }));
         }
       },
     );
@@ -233,6 +238,7 @@ class _MyHomePageState extends State<MyHomePage> {
     'SingleChildScrollView',
     'ListView',
     'GridView',
+    'CustomScrollView',
   ];
 
   List<Icon> iconItems = <Icon>[
@@ -259,6 +265,7 @@ class _MyHomePageState extends State<MyHomePage> {
     new Icon(Icons.pages),
     new Icon(Icons.radio_button_unchecked),
     new Icon(Icons.slideshow),
+    new Icon(Icons.zoom_out_map),
   ];
 
   List<String> subTitleItems = <String>[
@@ -285,5 +292,6 @@ class _MyHomePageState extends State<MyHomePage> {
     'subTitle: SingleChildScrollView',
     'subTitle: ListView',
     'subTitle: GridView',
+    'subTitle: CustomScrollView',
   ];
 }

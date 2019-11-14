@@ -16,6 +16,7 @@ import 'package:flutter_app/LayoutClassComponent/FlexibleLayout/FlexibleLayout.d
 import 'package:flutter_app/LayoutClassComponent/IntroductionToLayoutClassComponents/IntroductionToLayoutClassComponents.dart';
 import 'package:flutter_app/LayoutClassComponent/LinearLayout/LinearLayoutRowColumn.dart';
 import 'package:flutter_app/LayoutClassComponent/StreamingLayout/StreamingLayout.dart';
+import 'package:flutter_app/ScrollableComponent/GridView/GridViewClass.dart';
 import 'package:flutter_app/ScrollableComponent/IntroductionToScrollableComponents/IntroductionToScrollableComponents.dart';
 import 'package:flutter_app/ScrollableComponent/ListView/ListViewClass.dart';
 import 'package:flutter_app/ScrollableComponent/SingleChildScrollView/SingleChildScrollViewClass.dart';
@@ -198,6 +199,10 @@ class _MyHomePageState extends State<MyHomePage> {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
             return ListViewClass();
           }));
+        } else if (titleItem == 'GridView'){
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return GridViewClass();
+          }));
         }
       },
     );
@@ -227,6 +232,7 @@ class _MyHomePageState extends State<MyHomePage> {
     '可滚动组件简介',
     'SingleChildScrollView',
     'ListView',
+    'GridView',
   ];
 
   List<Icon> iconItems = <Icon>[
@@ -252,6 +258,7 @@ class _MyHomePageState extends State<MyHomePage> {
     new Icon(Icons.router),
     new Icon(Icons.pages),
     new Icon(Icons.radio_button_unchecked),
+    new Icon(Icons.slideshow),
   ];
 
   List<String> subTitleItems = <String>[
@@ -277,5 +284,6 @@ class _MyHomePageState extends State<MyHomePage> {
     'subTitle: 可滚动组件简介',
     'subTitle: SingleChildScrollView',
     'subTitle: ListView',
+    'subTitle: GridView',
   ];
 }

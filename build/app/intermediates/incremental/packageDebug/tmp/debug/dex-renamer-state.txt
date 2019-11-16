@@ -1,4 +1,4 @@
-#Sat Nov 16 22:41:31 CST 2019
+#Sat Nov 16 22:58:16 CST 2019
 base.0=/Users/houchenguang/Desktop/GitHub/Learning-flutter/build/app/intermediates/transforms/dexMerger/debug/0
 path.0=classes.dex
 renamed.0=classes.dex

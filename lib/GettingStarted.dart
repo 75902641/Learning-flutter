@@ -11,6 +11,7 @@ import 'package:flutter_app/ContainerClassWidget/Padding/PaddingClass.dart';
 import 'package:flutter_app/ContainerClassWidget/ScaffoldTabBar/ScaffoldTabBarClass.dart';
 import 'package:flutter_app/ContainerClassWidget/SizeLimitClassContainer/SizeLimitClassContainer.dart';
 import 'package:flutter_app/ContainerClassWidget/Transform/TransformClass.dart';
+import 'package:flutter_app/IntroductionToFunctionalWidgets/CrossComponentStateSharing/CrossComponentStateSharing.dart';
 import 'package:flutter_app/IntroductionToFunctionalWidgets/DataSharing/DataSharing.dart';
 import 'package:flutter_app/IntroductionToFunctionalWidgets/NavigationReturnInterception/NavigationReturnInterception.dart';
 import 'package:flutter_app/LayoutClassComponent/AlignmentAndRelativePositioning/AlignmentAndRelativePositioning.dart';
@@ -179,6 +180,10 @@ class _GettingStartedState extends State<GettingStarted> {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
             return DataSharing();
           }));
+        } else if (titleItem == '跨组件状态共享') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return CrossComponentStateSharing();
+          }));
         }
       },
     );
@@ -213,6 +218,7 @@ class _GettingStartedState extends State<GettingStarted> {
     '滚动监听及控制',
     '导航返回拦截',
     '数据共享',
+    '跨组件状态共享',
   ];
 
   List<Icon> iconItems = <Icon>[
@@ -243,6 +249,7 @@ class _GettingStartedState extends State<GettingStarted> {
     new Icon(Icons.zoom_out),
     new Icon(Icons.youtube_searched_for),
     new Icon(Icons.wifi_tethering),
+    new Icon(Icons.wifi_lock),
   ];
 
   List<String> subTitleItems = <String>[
@@ -273,5 +280,6 @@ class _GettingStartedState extends State<GettingStarted> {
     'subTitle: 滚动监听及控制',
     'subTitle: 导航返回拦截（WillPopScope）',
     'subTitle: 数据共享（InheritedWidget）',
+    'subTitle: 跨组件状态共享（Provider）',
   ];
 }

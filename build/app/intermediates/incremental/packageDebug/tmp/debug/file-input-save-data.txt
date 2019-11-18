@@ -1,19 +1,19 @@
 #Internal package file, do not edit.
-#Sat Nov 16 22:58:17 CST 2019
+#Mon Nov 18 15:23:46 CST 2019
 4.path=flutter_assets/kernel_blob.bin
-8.set=ASSET
+8.set=NATIVE_RESOURCE
 6.path=flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
 0.baseType=DIRECTORY
 10.path=lib/x86_64/libflutter.so
 5.baseType=DIRECTORY
 1.base=/Users/houchenguang/Desktop/GitHub/Learning-flutter/build/app/intermediates/merged_assets/debug/mergeDebugAssets/out
-8.path=flutter_assets/vm_snapshot_data
+8.path=lib/arm64-v8a/libflutter.so
 3.base=/Users/houchenguang/Desktop/GitHub/Learning-flutter/build/app/intermediates/merged_assets/debug/mergeDebugAssets/out
 4.set=ASSET
 5.base=/Users/houchenguang/Desktop/GitHub/Learning-flutter/build/app/intermediates/merged_assets/debug/mergeDebugAssets/out
 7.base=/Users/houchenguang/Desktop/GitHub/Learning-flutter/build/app/intermediates/transforms/mergeJniLibs/debug/0
 11.base=/Users/houchenguang/Desktop/GitHub/Learning-flutter/build/app/intermediates/merged_assets/debug/mergeDebugAssets/out
-9.base=/Users/houchenguang/Desktop/GitHub/Learning-flutter/build/app/intermediates/transforms/mergeJniLibs/debug/0
+9.base=/Users/houchenguang/Desktop/GitHub/Learning-flutter/build/app/intermediates/merged_assets/debug/mergeDebugAssets/out
 1.baseType=DIRECTORY
 11.set=ASSET
 0.set=ASSET
@@ -30,7 +30,7 @@
 0.base=/Users/houchenguang/Desktop/GitHub/Learning-flutter/build/app/intermediates/merged_assets/debug/mergeDebugAssets/out
 7.path=lib/x86/libflutter.so
 11.path=flutter_assets/AssetManifest.json
-9.path=lib/armeabi-v7a/libflutter.so
+9.path=flutter_assets/vm_snapshot_data
 6.set=ASSET
 2.base=/Users/houchenguang/Desktop/GitHub/Learning-flutter/build/app/intermediates/transforms/dexMerger/debug/0
 11.baseType=DIRECTORY
@@ -38,10 +38,10 @@
 3.baseType=DIRECTORY
 6.base=/Users/houchenguang/Desktop/GitHub/Learning-flutter/build/app/intermediates/merged_assets/debug/mergeDebugAssets/out
 10.base=/Users/houchenguang/Desktop/GitHub/Learning-flutter/build/app/intermediates/transforms/mergeJniLibs/debug/0
-8.base=/Users/houchenguang/Desktop/GitHub/Learning-flutter/build/app/intermediates/merged_assets/debug/mergeDebugAssets/out
+8.base=/Users/houchenguang/Desktop/GitHub/Learning-flutter/build/app/intermediates/transforms/mergeJniLibs/debug/0
 2.set=DEX
 8.baseType=DIRECTORY
-9.set=NATIVE_RESOURCE
+9.set=ASSET
 count=12
 4.baseType=DIRECTORY
 5.set=ASSET

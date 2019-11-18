@@ -51,6 +51,8 @@ class _GettingStartedState extends State<GettingStarted> {
             separatorBuilder: (BuildContext context, int index) =>
                 new Divider(),
             itemCount: titleItems.length),
+            
+            
       ),
     );
   }

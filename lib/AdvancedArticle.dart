@@ -7,11 +7,24 @@ class AdvancedArticle extends StatefulWidget {
 }
 
 class _AdvancedArticleState extends State<AdvancedArticle> {
+  var aaaa = '尽情期待';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text('尽情期待', style: TextStyle(fontSize: 20.0),),
+        child: Column(
+          children: <Widget>[
+            Text('$aaaa', style: TextStyle(fontSize: 20.0),),
+            RaisedButton(
+              child: Text('改变内容'),
+              onPressed: (){
+                setState(() {
+                  aaaa = '马上更新';
+                });
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

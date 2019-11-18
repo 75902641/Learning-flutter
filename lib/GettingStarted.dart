@@ -11,6 +11,7 @@ import 'package:flutter_app/ContainerClassWidget/Padding/PaddingClass.dart';
 import 'package:flutter_app/ContainerClassWidget/ScaffoldTabBar/ScaffoldTabBarClass.dart';
 import 'package:flutter_app/ContainerClassWidget/SizeLimitClassContainer/SizeLimitClassContainer.dart';
 import 'package:flutter_app/ContainerClassWidget/Transform/TransformClass.dart';
+import 'package:flutter_app/IntroductionToFunctionalWidgets/NavigationReturnInterception/NavigationReturnInterception.dart';
 import 'package:flutter_app/LayoutClassComponent/AlignmentAndRelativePositioning/AlignmentAndRelativePositioning.dart';
 import 'package:flutter_app/LayoutClassComponent/CascadingLayout/CascadingLayout.dart';
 import 'package:flutter_app/LayoutClassComponent/FlexibleLayout/FlexibleLayout.dart';
@@ -40,7 +41,6 @@ class _GettingStartedState extends State<GettingStarted> {
           context, titleItems[i], iconItems[i], subTitleItems[i]));
     }
     return new Scaffold(
-      
       body: new Scrollbar(
         // ListView.separated写法
         child: new ListView.separated(
@@ -168,6 +168,10 @@ class _GettingStartedState extends State<GettingStarted> {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
             return RollingMonitoringAndControl();
           }));
+        } else if (titleItem == '导航返回拦截') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return NavigationReturnInterception();
+          }));
         }
       },
     );
@@ -200,6 +204,7 @@ class _GettingStartedState extends State<GettingStarted> {
     'GridView',
     'CustomScrollView',
     '滚动监听及控制',
+    '导航返回拦截',
   ];
 
   List<Icon> iconItems = <Icon>[
@@ -228,6 +233,7 @@ class _GettingStartedState extends State<GettingStarted> {
     new Icon(Icons.slideshow),
     new Icon(Icons.zoom_out_map),
     new Icon(Icons.zoom_out),
+    new Icon(Icons.youtube_searched_for),
   ];
 
   List<String> subTitleItems = <String>[
@@ -256,5 +262,6 @@ class _GettingStartedState extends State<GettingStarted> {
     'subTitle: GridView',
     'subTitle: CustomScrollView',
     'subTitle: 滚动监听及控制',
+    'subTitle: 导航返回拦截（WillPopScope）',
   ];
 }

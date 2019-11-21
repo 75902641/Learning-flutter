@@ -11,6 +11,7 @@ import 'package:flutter_app/ContainerClassWidget/Padding/PaddingClass.dart';
 import 'package:flutter_app/ContainerClassWidget/ScaffoldTabBar/ScaffoldTabBarClass.dart';
 import 'package:flutter_app/ContainerClassWidget/SizeLimitClassContainer/SizeLimitClassContainer.dart';
 import 'package:flutter_app/ContainerClassWidget/Transform/TransformClass.dart';
+import 'package:flutter_app/IntroductionToFunctionalWidgets/ColorAndTheme/ColorAndTheme.dart';
 import 'package:flutter_app/IntroductionToFunctionalWidgets/CrossComponentStateSharing/CrossComponentStateSharing.dart';
 import 'package:flutter_app/IntroductionToFunctionalWidgets/DataSharing/DataSharing.dart';
 import 'package:flutter_app/IntroductionToFunctionalWidgets/NavigationReturnInterception/NavigationReturnInterception.dart';
@@ -184,6 +185,10 @@ class _GettingStartedState extends State<GettingStarted> {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
             return CrossComponentStateSharing();
           }));
+        } else if (titleItem == '颜色和主题') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return ColorAndTheme();
+          }));
         }
       },
     );
@@ -219,6 +224,7 @@ class _GettingStartedState extends State<GettingStarted> {
     '导航返回拦截',
     '数据共享',
     '跨组件状态共享',
+    '颜色和主题',
   ];
 
   List<Icon> iconItems = <Icon>[
@@ -250,6 +256,7 @@ class _GettingStartedState extends State<GettingStarted> {
     new Icon(Icons.youtube_searched_for),
     new Icon(Icons.wifi_tethering),
     new Icon(Icons.wifi_lock),
+    new Icon(Icons.widgets),
   ];
 
   List<String> subTitleItems = <String>[
@@ -281,5 +288,6 @@ class _GettingStartedState extends State<GettingStarted> {
     'subTitle: 导航返回拦截（WillPopScope）',
     'subTitle: 数据共享（InheritedWidget）',
     'subTitle: 跨组件状态共享（Provider）',
+    'subTitle: 颜色和主题（Theme）',
   ];
 }

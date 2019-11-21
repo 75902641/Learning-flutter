@@ -11,6 +11,7 @@ import 'package:flutter_app/ContainerClassWidget/Padding/PaddingClass.dart';
 import 'package:flutter_app/ContainerClassWidget/ScaffoldTabBar/ScaffoldTabBarClass.dart';
 import 'package:flutter_app/ContainerClassWidget/SizeLimitClassContainer/SizeLimitClassContainer.dart';
 import 'package:flutter_app/ContainerClassWidget/Transform/TransformClass.dart';
+import 'package:flutter_app/IntroductionToFunctionalWidgets/AsynchronousUIUpdate/AsynchronousUIUpdate.dart';
 import 'package:flutter_app/IntroductionToFunctionalWidgets/ColorAndTheme/ColorAndTheme.dart';
 import 'package:flutter_app/IntroductionToFunctionalWidgets/CrossComponentStateSharing/CrossComponentStateSharing.dart';
 import 'package:flutter_app/IntroductionToFunctionalWidgets/DataSharing/DataSharing.dart';
@@ -189,6 +190,10 @@ class _GettingStartedState extends State<GettingStarted> {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
             return ColorAndTheme();
           }));
+        } else if (titleItem == '异步UI更新') {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return AsynchronousUIUpdate();
+          }));
         }
       },
     );
@@ -225,6 +230,7 @@ class _GettingStartedState extends State<GettingStarted> {
     '数据共享',
     '跨组件状态共享',
     '颜色和主题',
+    '异步UI更新',
   ];
 
   List<Icon> iconItems = <Icon>[
@@ -257,6 +263,7 @@ class _GettingStartedState extends State<GettingStarted> {
     new Icon(Icons.wifi_tethering),
     new Icon(Icons.wifi_lock),
     new Icon(Icons.widgets),
+    new Icon(Icons.weekend),
   ];
 
   List<String> subTitleItems = <String>[
@@ -289,5 +296,6 @@ class _GettingStartedState extends State<GettingStarted> {
     'subTitle: 数据共享（InheritedWidget）',
     'subTitle: 跨组件状态共享（Provider）',
     'subTitle: 颜色和主题（Theme）',
+    'subTitle:  异步UI更新（FutureBuilder、StreamBuilder）',
   ];
 }
